@@ -10,14 +10,15 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import Badge from "@material-ui/core/Badge";
-import SvgIcon from "@material-ui/core/SvgIcon";
-
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
 import Icon from "@material-ui/core/Icon";
 import { loadCSS } from "fg-loadcss";
+import { Fragment } from "react";
+
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,10 +33,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
+    // display: "none",
+    // [theme.breakpoints.up("sm")]: {
+    //   display: "block",
+    // },
   },
   sectionDesktop: {
     display: "none",
@@ -64,6 +65,12 @@ const Header = () => {
     };
   }, []);
 
+  const history = useHistory();
+  const redirectHandler = (redirect_to) => () => {
+    console.log(redirect_to);
+    history.push(redirect_to);
+  };
+
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -75,6 +82,34 @@ const Header = () => {
   };
 
   const mobileMenuId = "primary-search-account-menu-mobile";
+  const menuItems = (
+    <Fragment>
+      <MenuItem onClick={redirectHandler("/journey")}>
+        <IconButton aria-label="journey" color="inherit">
+          <Icon className="fas fa-user-tie" color="inherit" />
+        </IconButton>
+        <p>Journey</p>
+      </MenuItem>
+      <MenuItem onClick={redirectHandler("/pics")}>
+        <IconButton aria-label="pics" color="inherit">
+          <Icon className="fas fa-camera" color="inherit" />
+        </IconButton>
+        <p>Pics</p>
+      </MenuItem>
+      <MenuItem onClick={redirectHandler("/books")}>
+        <IconButton aria-label="books" color="inherit">
+          <Icon className="fas fa-book-reader" color="inherit" />
+        </IconButton>
+        <p>Books</p>
+      </MenuItem>
+      <MenuItem onClick={redirectHandler("/writings")}>
+        <IconButton aria-label="writings" color="inherit">
+          <Icon className="fas fa-pen-fancy" color="inherit" />
+        </IconButton>
+        <p>Writings</p>
+      </MenuItem>
+    </Fragment>
+  );
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -85,22 +120,7 @@ const Header = () => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
+      <div>{menuItems}</div>
     </Menu>
   );
 
@@ -108,41 +128,15 @@ const Header = () => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Amit Kumar (CEO OLX Autos)
-          </Typography>
+          <MenuItem onClick={redirectHandler("/")}>
+            <Typography variant="h6" className={classes.title}>
+              Amit Kumar (CEO OLX Autos)
+            </Typography>
+          </MenuItem>
           {/* <Button color="inherit">Login</Button> */}
           <div className={classes.grow} />
 
-          <div className={classes.sectionDesktop}>
-            <MenuItem>
-              <IconButton aria-label="journey" color="inherit">
-                <Icon className="fas fa-user-tie" color="inherit" />
-              </IconButton>
-              <p>Journey</p>
-            </MenuItem>
-            <MenuItem>
-              <IconButton aria-label="pics" color="inherit">
-                <Icon className="fas fa-camera" color="inherit" />
-              </IconButton>
-              <p>Pics</p>
-            </MenuItem>
-            <MenuItem>
-              <IconButton aria-label="pics" color="inherit">
-                {/* <Icon className="far fa-books" color="inherit" /> */}
-                <SvgIcon {...props}></SvgIcon>
-              </IconButton>
-              <p>Books</p>
-            </MenuItem>
-          </div>
+          <div className={classes.sectionDesktop}>{menuItems}</div>
           <div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"
