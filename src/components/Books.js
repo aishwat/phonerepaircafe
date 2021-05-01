@@ -20,8 +20,9 @@ import B5 from "../assets/b5.jpg";
 import B6 from "../assets/b6.jpg";
 
 const useStyles = makeStyles({
-  root: {
-    maxWidth: 300,
+  card: {
+    maxWidth: 350,
+    margin: 'auto',
   },
   media: {
     width: "100%",
@@ -36,8 +37,11 @@ const useStyles = makeStyles({
     // borderStyle: "dashed",
     // backgroundColor: "#e1e1e1",
   },
+  grid:{
+    justifyContent:"space-around"
+  },
   gridItem: {
-    // margin:"0px 0px 30px 0px",
+    margin:"10px 10px 30px 10px",
     // borderWidth: "thin",
     // border: "#666666",
     // borderStyle: "dashed",
@@ -108,6 +112,15 @@ const books = [
 
 const Books = () => {
   const classes = useStyles();
+  const [activeBook, setActiveBook] = React.useState(0);
+  const onMouseEnterHandler = (id) => (e) => {
+    console.log("enter handler", id);
+    setActiveBook(id);
+  };
+  const onMouseLeaveHandler = (id) => (e) => {
+    console.log("leave handler", id);
+    setActiveBook(0);
+  };
 
   const cardClickHandler = (book) => (e) => {
     console.log(book.title);
@@ -118,17 +131,22 @@ const Books = () => {
   return (
     <Fragment>
       <SubHeader>I Love Reading!!!</SubHeader>
-      <Grid container className={classes.border} spacing={4}>
+      <Grid container className={classes.grid}>
         {books.map((book) => (
           <Grid
             key={book.id}
             item
-            xs={12}
-            sm={4}
+            // xs={12}
+            // sm={4}
             //
             className={classes.gridItem}
+            onMouseEnter={onMouseEnterHandler(book.id)}
+            onMouseLeave={onMouseLeaveHandler(book.id)}
           >
-            <Card className={classes.root}>
+            <Card
+              className={classes.card}
+              elevation={activeBook == book.id ? 8 : 2}
+            >
               <CardActionArea onClick={cardClickHandler(book)}>
                 <CardMedia
                   component="img"
@@ -141,11 +159,7 @@ const Books = () => {
               </CardActionArea>
               <CardContent className={classes.cardContent}>
                 <CardActionArea onClick={cardClickHandler(book)}>
-                  <Typography
-                    variant="h5"
-                    component="h2"
-                    color="primary"
-                  >
+                  <Typography variant="h5" component="h2" color="primary">
                     {book.title}
                   </Typography>
                 </CardActionArea>

@@ -14,15 +14,21 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import { Fragment } from "react";
 import Profile from "../assets/img_lo.jpeg";
+import Chip from "@material-ui/core/Chip";
 
-import SubHeader from './SubHeader'
-
+import SubHeader from "./SubHeader";
 const useStyles = makeStyles((theme) => ({
   profile_pic: {
-    maxWidth: "100%",
-    width: "450px",
+    maxWidth: 500,
+    height: 400,
+    backgroundImage: `url(${Profile})`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center top",
+    backgroundSize: "cover",
+    margin: "20px",
     // border: "1px solid grey",
   },
+
   profile_text: {
     display: "flex",
     flexDirection: "column",
@@ -30,6 +36,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "flex-start",
     justifyContent: "space-evenly",
     paddingLeft: "20px",
+    overflow: "hidden",
+    color: "rgba(80,80,80, 1)",
   },
   title: {
     // fontFamily: ["MarkPro", "sans-serif"],
@@ -43,7 +51,6 @@ const useStyles = makeStyles((theme) => ({
     // border: "#666666",
     // borderStyle: 'dashed',
     // padding: theme.spacing(0),
-    
   },
   // gridBox: {
   //   margin: theme.spacing(0),
@@ -59,32 +66,40 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     backgroundColor: "#f5f5f5",
   },
-  skillChip: {
-    margin: "5px",
-  },
   label: {
     // display: "flex",
     // justifyContent: "space-between",
     // alignItems: "center",
   },
   stepContent: {
-    padding: "15px 0px 0px 15px",
+    padding: "15px 0px 0px 20px",
   },
   designation: {
     marginBottom: "10px",
     fontSize: "12pt",
     fontWeight: "700",
+    color: "rgba(0, 0, 0, 0.6)",
+  },
+  designationHover: {
+    marginBottom: "10px",
+    fontSize: "12pt",
+    fontWeight: "700",
+    color: "rgb(63,81,181)",
+    // color: "rgba(0, 0, 0, 1)",
   },
   desc: {
-    // fontFamily: ["MarkPro", "sans-serif"],
-    fontSize: "11pt",
-    // fontWeight: "500",
+    fontSize: "12pt",
+    color: "rgba(0, 0, 0, 0.6)",
   },
   ul: {
     fontWeight: "normal",
-    // fontFamily: ["MarkPro", "sans-serif"],
-    fontSize: "11pt",
-    color: "rgba(0, 0, 0, 0.54)",
+    fontSize: "13pt",
+    color: "rgba(80, 80, 80, 1)",
+  },
+  ulHover: {
+    fontWeight: "normal",
+    fontSize: "13pt",
+    color: "rgba(0, 0, 0, 1)",
   },
   li: {
     margin: "10px 0",
@@ -203,12 +218,12 @@ const Journey = () => {
   const workSteps = getWorkEx();
   const edSteps = getEd();
 
-  const onMouseEnterHandler = (i) => (e) => {
-    console.log("enter handler", i);
-    setActiveStep(i);
+  const onMouseEnterHandler = (id) => (e) => {
+    console.log("enter handler", id);
+    setActiveStep(id);
   };
-  const onMouseLeaveHandler = (i) => (e) => {
-    console.log("leave handler", i);
+  const onMouseLeaveHandler = (id) => (e) => {
+    console.log("leave handler", id);
     setActiveStep(0);
   };
 
@@ -217,7 +232,7 @@ const Journey = () => {
       <SubHeader>My Professional Journey</SubHeader>
       <Grid container className={classes.gridRoot}>
         <Grid item xs={12} className={classes.border}></Grid>
-        <Grid item xs={7} className={classes.profile_text}>
+        <Grid item sm={7} xs={12} className={classes.profile_text}>
           <Typography variant="h5" className={classes.border}>
             Fast track Global career
           </Typography>
@@ -227,13 +242,25 @@ const Journey = () => {
           <Typography variant="h5" className={classes.border}>
             Currently CEO OLX Autos India
           </Typography>
-          <Typography variant="caption" className={classes.border}>
-            Leading large team; Building businesses from scratch;E-commerce,
-            FMCG & Automotive domains, Across Asia, Africa & Europe,
-          </Typography>
+          <Chip label="Leading large team" />
+          <Chip label="Building businesses from scratch" />
+          <Chip
+            label="E-commerce, FMCG &
+          Automotive domains, Across Asia, Africa & Europe"
+          />
         </Grid>
-        <Grid item xs={5} className={classes.border}>
-          <img src={Profile} className={classes.profile_pic} />
+        <Grid
+          item
+          sm={5}
+          xs={12}
+          className={classes.border}
+          onMouseEnter={onMouseEnterHandler("profile_pic")}
+          onMouseLeave={onMouseLeaveHandler("profile_pic")}
+        >
+          <Paper
+            className={classes.profile_pic}
+            elevation={activeStep === "profile_pic" ? 8 : 2}
+          />
         </Grid>
       </Grid>
 
@@ -246,8 +273,8 @@ const Journey = () => {
             {workSteps.map((step, index) => (
               <Step
                 key={step.comapany}
-                onMouseEnter={onMouseEnterHandler(index)}
-                onMouseLeave={onMouseLeaveHandler(index)}
+                onMouseEnter={onMouseEnterHandler(step.comapany)}
+                onMouseLeave={onMouseLeaveHandler(step.comapany)}
               >
                 <StepLabel active>
                   <div className={classes.label}>
@@ -255,9 +282,10 @@ const Journey = () => {
                       {step.comapany}
                     </Typography>
                     <Typography
+                      
                       color="secondary"
                       variant="caption"
-                      style={{ marginRight: "15%" }}
+                      // style={{ marginRight: "15%",opacity:`${step.comapany === activeStep?1:0.8}` }}
                     >
                       {step.duration}
                     </Typography>
@@ -269,7 +297,11 @@ const Journey = () => {
                       <Typography
                         variant="body1"
                         display={"block"}
-                        className={classes.designation}
+                        className={
+                          step.comapany === activeStep
+                            ? classes.designationHover
+                            : classes.designation
+                        }
                       >
                         {data.designation}
                       </Typography>
@@ -280,7 +312,13 @@ const Journey = () => {
                       >
                         {data.desc}
                       </Typography>
-                      <ul className={classes.ul}>
+                      <ul
+                        className={
+                          step.comapany === activeStep
+                            ? classes.ulHover
+                            : classes.ul
+                        }
+                      >
                         {data.points.map((point) => (
                           <li className={classes.li}>
                             <Typography variant="body2">{point}</Typography>
@@ -301,11 +339,11 @@ const Journey = () => {
         </Grid>
         <Grid item xs={12} className={classes.border}>
           <Stepper orientation="vertical" className={classes.stepper}>
-            {edSteps.map((step, index) => (
+            {edSteps.map((step) => (
               <Step
-                key={step.comapany}
-                onMouseEnter={onMouseEnterHandler(index)}
-                onMouseLeave={onMouseLeaveHandler(index)}
+                key={step.college}
+                onMouseEnter={onMouseEnterHandler(step.college)}
+                onMouseLeave={onMouseLeaveHandler(step.college)}
               >
                 <StepLabel active>
                   <div className={classes.label}>
@@ -323,7 +361,13 @@ const Journey = () => {
                 </StepLabel>
                 <StepContent active className={classes.stepContent}>
                   <Fragment>
-                    <ul className={classes.ul}>
+                    <ul
+                      className={
+                        step.college === activeStep
+                          ? classes.ulHover
+                          : classes.ul
+                      }
+                    >
                       {step.points.map((point) => (
                         <li className={classes.li}>
                           <Typography variant="body2">{point}</Typography>

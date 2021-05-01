@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 const SubHeader = (props) => {
   const classes = useStyles();
   return (
-    <Paper className={classes.subHeader} elevation={1} {...props}>
+    <Paper className={classes.subHeader} elevation={0} {...props}>
       {props.children}
     </Paper>
   );
