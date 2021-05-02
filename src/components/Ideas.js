@@ -9,7 +9,7 @@ import Grid from "@material-ui/core/Grid";
 
 import SubHeader from "./SubHeader";
 import { Fragment } from "react";
-import Profile from "../assets/img_lo.jpeg";
+import Profile from "../assets/img_hi.jpeg";
 import I6 from "../assets/i6.jpg";
 import I11 from "../assets/i11.jpg";
 import I12 from "../assets/i12.jpg";

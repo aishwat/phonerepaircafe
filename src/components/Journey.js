@@ -13,7 +13,7 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import { Fragment } from "react";
-import Profile from "../assets/img_lo.jpeg";
+import Profile from "../assets/img_hi.jpeg";
 import Chip from "@material-ui/core/Chip";
 
 import SubHeader from "./SubHeader";
