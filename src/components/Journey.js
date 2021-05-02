@@ -14,6 +14,7 @@ import Profile from "../assets/img_hi.jpeg";
 import Chip from "@material-ui/core/Chip";
 
 import SubHeader from "./SubHeader";
+import Contact from "./Contact";
 const useStyles = makeStyles((theme) => ({
   profile_pic: {
     maxWidth: 500,
@@ -258,6 +259,7 @@ const Journey = () => {
             className={classes.profile_pic}
             elevation={activeStep === "profile_pic" ? 8 : 2}
           />
+          <Contact displayInline />
         </Grid>
       </Grid>
 

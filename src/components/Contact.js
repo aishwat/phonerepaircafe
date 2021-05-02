@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
 import Icon from "@material-ui/core/Icon";
@@ -10,9 +9,9 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(1),
     },
-    marginTop: '60px',
+    padding: "10px",
+    overflowX: "scroll",
   },
-  
 }));
 
 const contacts = [
@@ -46,6 +45,12 @@ const contacts = [
     icon: "fas fa-map-marked",
     url: "https://goo.gl/maps/3dHMAmQpgfcFm4YU9",
   },
+  {
+    id: "ExecAmit@gmail.com",
+    color: "#bc00f5",
+    icon: "fas fa-envelope",
+    url: "mailto:ExecAmit@gmail.com",
+  },
 ];
 
 const Contact = (props) => {
@@ -78,7 +83,7 @@ const Contact = (props) => {
       style={{
         backgroundColor: contact.color,
         color: "white",
-        marginRight: "3%",
+        marginRight: props.displayInline ? "" : "3%",
       }}
       aria-label={contact.id}
     >
@@ -96,21 +101,18 @@ const Contact = (props) => {
     </Fab>
   ));
   return (
-    <Fragment>
-      {/* <SubHeader>Let's Connect</SubHeader> */}
-      <div className={classes.root}>
-        {props.displayInline ? (
-          <ButtonGroup
-            color="primary"
-            aria-label="outlined primary button group"
-          >
-            {fabButtons}
-          </ButtonGroup>
-        ) : (
-          fabButtons
-        )}
-      </div>
-    </Fragment>
+    <div
+      className={classes.root}
+      style={{ marginTop: props.displayInline ? "auto" : "60px" }}
+    >
+      {props.displayInline ? (
+        <ButtonGroup color="primary" aria-label="outlined primary button group">
+          {fabButtons}
+        </ButtonGroup>
+      ) : (
+        fabButtons
+      )}
+    </div>
   );
 };
 
