@@ -11,10 +11,9 @@ const useStyles = makeStyles((theme) => ({
     // border: "#666666",
     // borderStyle: "dashed",
     // backgroundColor: "#e1e1e1",
-
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "40px",
+    padding: "3%",
   },
   profile_pic: {
     maxWidth: 500,

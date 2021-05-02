@@ -1,13 +1,13 @@
 import React from "react";
 import { Fragment } from "react";
-import Ideas from "./Ideas";
+import Contact from "./Contact";
 import Intro from "./Intro";
 
 const Home = () => {
   return (
     <Fragment>
       <Intro />
-      <Ideas />
+      <Contact/>
     </Fragment>
   );
 };

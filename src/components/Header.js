@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,6 +13,8 @@ import Badge from "@material-ui/core/Badge";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 
 import Icon from "@material-ui/core/Icon";
 import { loadCSS } from "fg-loadcss";
@@ -54,6 +56,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
   const classes = useStyles();
+  const [activeMenuItem, setActiveMenuItem] = useState(0);
+
   React.useEffect(() => {
     const node = loadCSS(
       "https://use.fontawesome.com/releases/v5.12.0/css/all.css",
@@ -66,9 +70,11 @@ const Header = () => {
   }, []);
 
   const history = useHistory();
-  const redirectHandler = (redirect_to) => () => {
+  const redirectHandler = (menuItem, index) => () => {
+    const redirect_to = `/${menuItem.name || ""}`;
     console.log(redirect_to);
     history.push(redirect_to);
+    setActiveMenuItem(index||0);
   };
 
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -82,34 +88,52 @@ const Header = () => {
   };
 
   const mobileMenuId = "primary-search-account-menu-mobile";
-  const menuItems = (
-    <Fragment>
-      <MenuItem onClick={redirectHandler("/journey")}>
-        <IconButton aria-label="journey" color="inherit">
-          <Icon className="fas fa-user-tie" color="inherit" />
+
+  const menuData = [
+    {
+      name: "",
+      label: "Home",
+      icon: "fas fa-user",
+    },
+    {
+      name: "journey",
+      label: "Journey",
+      icon: "fas fa-seedling",
+    },
+    {
+      name: "ideas",
+      label: "Ideas",
+      icon: "fas fa-lightbulb",
+    },
+    {
+      name: "pics",
+      label: "Pics",
+      icon: "fas fa-image",
+    },
+    {
+      name: "books",
+      label: "Books",
+      icon: "fas fa-book",
+    },
+    {
+      name: "writings",
+      label: "Writings",
+      icon: "fas fa-pen",
+    },
+  ];
+
+  //  <Tabs value={1} onChange={tabChangeHandler} aria-label="simple tabs"></Tabs>
+  const menuItems =
+    // <Fragment>
+    menuData.map((menu, index) => (
+      <MenuItem onClick={redirectHandler(menu, index)}>
+        <IconButton aria-label={menu.name} color="inherit">
+          <Icon className={menu.icon} color="inherit" />
         </IconButton>
-        <p>Journey</p>
+        <p>{menu.label}</p>
       </MenuItem>
-      <MenuItem onClick={redirectHandler("/pics")}>
-        <IconButton aria-label="pics" color="inherit">
-          <Icon className="fas fa-camera" color="inherit" />
-        </IconButton>
-        <p>Pics</p>
-      </MenuItem>
-      <MenuItem onClick={redirectHandler("/books")}>
-        <IconButton aria-label="books" color="inherit">
-          <Icon className="fas fa-book-reader" color="inherit" />
-        </IconButton>
-        <p>Books</p>
-      </MenuItem>
-      <MenuItem onClick={redirectHandler("/writings")}>
-        <IconButton aria-label="writings" color="inherit">
-          <Icon className="fas fa-pen-fancy" color="inherit" />
-        </IconButton>
-        <p>Writings</p>
-      </MenuItem>
-    </Fragment>
-  );
+    ));
+    // </Fragment>
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -124,9 +148,13 @@ const Header = () => {
     </Menu>
   );
 
+  const tabChangeHandler = (id) => (e) => {
+    console.log(id);
+  };
+
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <MenuItem onClick={redirectHandler("/")}>
             <Typography variant="h6" className={classes.title}>
@@ -136,7 +164,11 @@ const Header = () => {
           {/* <Button color="inherit">Login</Button> */}
           <div className={classes.grow} />
 
-          <div className={classes.sectionDesktop}>{menuItems}</div>
+          <div className={classes.sectionDesktop}>
+            <Tabs value={activeMenuItem} aria-label="menu tabs">
+              {menuItems}
+            </Tabs>
+          </div>
           <div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"
@@ -150,6 +182,7 @@ const Header = () => {
           </div>
         </Toolbar>
       </AppBar>
+      <Toolbar />
       {renderMobileMenu}
     </div>
   );

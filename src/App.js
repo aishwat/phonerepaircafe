@@ -1,12 +1,14 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Button from "@material-ui/core/Button";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Journey from "./components/Journey";
+import Ideas from "./components/Ideas";
 import Pics from "./components/Pics";
 import Books from "./components/Books";
 import Writings from "./components/Writings";
+import Toolbar from "@material-ui/core/Toolbar";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -27,11 +29,11 @@ function App() {
 
         <div className={classes.root}>
           <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
             <Route path="/journey">
               <Journey />
+            </Route>
+            <Route path="/ideas">
+              <Ideas />
             </Route>
             <Route path="/pics">
               <Pics />
@@ -41,6 +43,9 @@ function App() {
             </Route>
             <Route path="/writings">
               <Writings />
+            </Route>
+            <Route path="/*">
+              <Home />
             </Route>
           </Switch>
         </div>
