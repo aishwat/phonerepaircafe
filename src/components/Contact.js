@@ -1,14 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SubHeader from "./SubHeader";
 import { Fragment } from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
 import Icon from "@material-ui/core/Icon";
-import AddIcon from "@material-ui/icons/Add";
-import EditIcon from "@material-ui/icons/Edit";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import NavigationIcon from "@material-ui/icons/Navigation";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,6 +70,7 @@ const Contact = (props) => {
 
   const fabButtons = contacts.map((contact) => (
     <Fab
+      key={contact.id}
       onMouseEnter={onMouseEnterHandler(contact.id)}
       onMouseLeave={onMouseLeaveHandler(contact.id)}
       onClick={onClickHandler(contact.url)}
@@ -82,7 +78,7 @@ const Contact = (props) => {
       style={{
         backgroundColor: contact.color,
         color: "white",
-        marginRight:"3%"
+        marginRight: "3%",
       }}
       aria-label={contact.id}
     >

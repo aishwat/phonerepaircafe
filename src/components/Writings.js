@@ -147,7 +147,7 @@ const Writings = () => {
           >
             <Card
               className={classes.card}
-              elevation={activeCard == book.id ? 8 : 2}
+              elevation={activeCard === book.id ? 8 : 2}
             >
               <CardActionArea onClick={cardClickHandler(book)}>
                 <CardMedia
@@ -167,7 +167,7 @@ const Writings = () => {
                 </CardActionArea>
 
                 <Typography
-                  variant={activeCard == book.id ? "body1" : "body2"}
+                  variant={activeCard === book.id ? "body1" : "body2"}
                   className={classes.desc}
                 >
                   {book.desc}

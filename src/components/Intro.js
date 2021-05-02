@@ -59,7 +59,7 @@ const Intro = () => {
     console.log("leave handler", id);
     setActiveStep(0);
   };
-
+  
   return (
     <Grid container className={classes.grid}>
       <Grid item xs={12} sm={6} className={classes.border}>

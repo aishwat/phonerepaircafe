@@ -2,10 +2,10 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
+
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
+
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
@@ -22,7 +22,7 @@ import B6 from "../assets/b6.jpg";
 const useStyles = makeStyles({
   card: {
     maxWidth: 350,
-    margin: 'auto',
+    margin: "auto",
   },
   media: {
     width: "100%",
@@ -37,11 +37,11 @@ const useStyles = makeStyles({
     // borderStyle: "dashed",
     // backgroundColor: "#e1e1e1",
   },
-  grid:{
-    justifyContent:"space-around"
+  grid: {
+    justifyContent: "space-around",
   },
   gridItem: {
-    margin:"10px 10px 30px 10px",
+    margin: "10px 10px 30px 10px",
     // borderWidth: "thin",
     // border: "#666666",
     // borderStyle: "dashed",
@@ -145,7 +145,7 @@ const Books = () => {
           >
             <Card
               className={classes.card}
-              elevation={activeBook == book.id ? 8 : 2}
+              elevation={activeBook === book.id ? 8 : 2}
             >
               <CardActionArea onClick={cardClickHandler(book)}>
                 <CardMedia

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -17,10 +17,10 @@ import I13 from "../assets/i13.jpg";
 
 const iFrameConfig = {
   host: "https://www.youtube-nocookie.com/embed/",
-  frameborder: "0",
+  frameBorder: "0",
   allow:
     "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
-  allowfullscreen: "allowfullscreen",
+  allowFullScreen: "allowfullscreen",
   width: "480",
 };
 
@@ -237,7 +237,7 @@ const Ideas = () => {
                 marginLeft: "10px",
                 marginRight: "10px",
               }}
-              elevation={activeCard == idea.id ? 8 : 2}
+              elevation={activeCard === idea.id ? 8 : 2}
             >
               <CardActionArea onClick={cardClickHandler(idea)}>
                 {idea.src ? (
@@ -266,7 +266,7 @@ const Ideas = () => {
                 </CardActionArea>
 
                 <Typography
-                  variant={activeCard == idea.id ? "body1" : "body2"}
+                  variant={activeCard === idea.id ? "body1" : "body2"}
                   // style={{color: activeCard == idea.id ? "rgba(1,1,1,1)":"rgba(1,1,1,0.5)"}}
                   component="p"
                   className={classes.desc}

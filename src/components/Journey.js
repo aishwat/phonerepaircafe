@@ -5,13 +5,10 @@ import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import StepContent from "@material-ui/core/StepContent";
-import Button from "@material-ui/core/Button";
+
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
 import { Fragment } from "react";
 import Profile from "../assets/img_hi.jpeg";
 import Chip from "@material-ui/core/Chip";
@@ -282,7 +279,6 @@ const Journey = () => {
                       {step.comapany}
                     </Typography>
                     <Typography
-                      
                       color="secondary"
                       variant="caption"
                       // style={{ marginRight: "15%",opacity:`${step.comapany === activeStep?1:0.8}` }}
@@ -293,7 +289,7 @@ const Journey = () => {
                 </StepLabel>
                 <StepContent active className={classes.stepContent}>
                   {step.data.map((data, i) => (
-                    <Fragment>
+                    <Fragment key={data.designation}>
                       <Typography
                         variant="body1"
                         display={"block"}
@@ -320,7 +316,7 @@ const Journey = () => {
                         }
                       >
                         {data.points.map((point) => (
-                          <li className={classes.li}>
+                          <li key={point} className={classes.li}>
                             <Typography variant="body2">{point}</Typography>
                           </li>
                         ))}
@@ -369,7 +365,7 @@ const Journey = () => {
                       }
                     >
                       {step.points.map((point) => (
-                        <li className={classes.li}>
+                        <li className={classes.li} key={point}>
                           <Typography variant="body2">{point}</Typography>
                         </li>
                       ))}

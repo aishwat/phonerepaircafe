@@ -1,24 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+
 import MoreIcon from "@material-ui/icons/MoreVert";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import Badge from "@material-ui/core/Badge";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+
 import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
 
 import Icon from "@material-ui/core/Icon";
 import { loadCSS } from "fg-loadcss";
-import { Fragment } from "react";
 
 import { useHistory } from "react-router-dom";
 
@@ -58,12 +53,13 @@ const Header = () => {
   const classes = useStyles();
   const [activeMenuItem, setActiveMenuItem] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    console.log("some test");
     const node = loadCSS(
       "https://use.fontawesome.com/releases/v5.12.0/css/all.css",
       document.querySelector("#font-awesome-css")
     );
-
+    console.clear();
     return () => {
       node.parentNode.removeChild(node);
     };
@@ -74,7 +70,7 @@ const Header = () => {
     const redirect_to = `/${menuItem.name || ""}`;
     console.log(redirect_to);
     history.push(redirect_to);
-    setActiveMenuItem(index||0);
+    setActiveMenuItem(index || 0);
   };
 
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -126,14 +122,14 @@ const Header = () => {
   const menuItems =
     // <Fragment>
     menuData.map((menu, index) => (
-      <MenuItem onClick={redirectHandler(menu, index)}>
+      <MenuItem key={menu.name} onClick={redirectHandler(menu, index)}>
         <IconButton aria-label={menu.name} color="inherit">
           <Icon className={menu.icon} color="inherit" />
         </IconButton>
         <p>{menu.label}</p>
       </MenuItem>
     ));
-    // </Fragment>
+  // </Fragment>
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -148,9 +144,9 @@ const Header = () => {
     </Menu>
   );
 
-  const tabChangeHandler = (id) => (e) => {
-    console.log(id);
-  };
+  // const tabChangeHandler = (id) => (e) => {
+  //   console.log(id);
+  // };
 
   return (
     <div className={classes.root}>
