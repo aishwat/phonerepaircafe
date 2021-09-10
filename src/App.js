@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
+        <Header/>
 
         <div className={classes.root}>
           <Switch>

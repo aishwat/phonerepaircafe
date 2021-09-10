@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -15,7 +16,8 @@ import Tabs from "@material-ui/core/Tabs";
 import Icon from "@material-ui/core/Icon";
 import { loadCSS } from "fg-loadcss";
 
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,18 +53,25 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
   const classes = useStyles();
+  const location = useLocation();
   const [activeMenuItem, setActiveMenuItem] = useState(0);
 
   useEffect(() => {
-    console.log("some test");
+    const subRoutes = ['home', 'journey', 'ideas', 'pics', 'books', 'writings']
+    const subRoute = `${location.pathname.substring(1)}`;
+    if(subRoutes.includes(subRoute)){
+      setActiveMenuItem(subRoutes.indexOf(subRoute))
+    }
+    console.log('setting route', subRoutes.indexOf(subRoute))
     const node = loadCSS(
       "https://use.fontawesome.com/releases/v5.12.0/css/all.css",
       document.querySelector("#font-awesome-css")
     );
-    console.clear();
+    // console.clear();
     return () => {
       node.parentNode.removeChild(node);
     };
+    // eslint-disable-next-line
   }, []);
 
   const history = useHistory();
