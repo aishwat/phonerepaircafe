@@ -31,13 +31,7 @@ const contacts = [
     id: "Facebook",
     color: "rgba(66, 103, 178)",
     icon: "fab fa-facebook-f",
-    url: "https://www.facebook.com/execamit",
-  },
-  {
-    id: "Medium",
-    color: "rgba(100, 100, 100)",
-    icon: "fab fa-medium-m",
-    url: "https://medium.com/@execamit",
+    url: "https://www.facebook.com/profile.php?id=100064023334142",
   },
   {
     id: "Maps",

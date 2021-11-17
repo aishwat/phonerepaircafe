@@ -100,31 +100,6 @@ const Header = () => {
       label: "Home",
       icon: "fas fa-user",
     },
-    {
-      name: "journey",
-      label: "Journey",
-      icon: "fas fa-seedling",
-    },
-    {
-      name: "ideas",
-      label: "Ideas",
-      icon: "fas fa-lightbulb",
-    },
-    {
-      name: "pics",
-      label: "Pics",
-      icon: "fas fa-image",
-    },
-    {
-      name: "books",
-      label: "Books",
-      icon: "fas fa-book",
-    },
-    {
-      name: "writings",
-      label: "Writings",
-      icon: "fas fa-pen",
-    },
   ];
 
   //  <Tabs value={1} onChange={tabChangeHandler} aria-label="simple tabs"></Tabs>
@@ -163,7 +138,7 @@ const Header = () => {
         <Toolbar>
           <MenuItem onClick={redirectHandler("/")}>
             <Typography variant="h6" className={classes.title}>
-              Amit Kumar (CEO OLX Autos)
+              The Phone Repair Cafe
             </Typography>
           </MenuItem>
           {/* <Button color="inherit">Login</Button> */}

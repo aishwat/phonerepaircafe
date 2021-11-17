@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Profile from "../assets/img_hi.jpeg";
+import Profile from "../assets/banner.jpg";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
@@ -11,18 +11,19 @@ const useStyles = makeStyles((theme) => ({
     // border: "#666666",
     // borderStyle: "dashed",
     // backgroundColor: "#e1e1e1",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
-    padding: "3%",
+    // padding: "3%",
   },
   profile_pic: {
-    maxWidth: 500,
-    height: 400,
+    width: 600,
+    height: 350,
     backgroundImage: `url(${Profile})`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center top",
     backgroundSize: "cover",
-    // margin: "20px",
+    marginTop: "20px",
+    overflow: "scroll"
     // border: "1px solid grey",
   },
 
@@ -65,14 +66,14 @@ const Intro = () => {
       <Grid item xs={12} sm={6} className={classes.border}>
         <div className={classes.profile_text}>
           <Typography variant="h5" component="h2" color="primary">
-            Welcome to Amit Kumar's home page
+            Welcome to The Phone Repair Cafe
           </Typography>
           <Typography
             className={classes.title}
             color="secondary"
             gutterBottom
           >
-            CEO OLX Autos in India
+            Where phone repair is an experience ☕
           </Typography>
           <Typography gutterBottom>
             An accomplished business leader who has built
