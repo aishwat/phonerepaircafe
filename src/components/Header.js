@@ -134,7 +134,7 @@ const Header = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="fixed" color="secondary">
         <Toolbar>
           <MenuItem onClick={redirectHandler("/")}>
             <Typography variant="h6" className={classes.title}>
