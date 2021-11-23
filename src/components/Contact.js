@@ -16,34 +16,54 @@ const useStyles = makeStyles((theme) => ({
 
 const contacts = [
   {
-    id: "LinkedIn",
-    color: "rgba(40,103,178)",
-    icon: "fab fa-linkedin-in",
-    url: "https://www.linkedin.com/in/execamit/",
+    id: "9350433533",
+    color: "rgba(29,161,242)",
+    icon: "fas fa-mobile-alt",
+    url: "tel:9350433533",
   },
   {
-    id: "Twitter",
+    id: "9350 533 533",
     color: "rgba(29,161,242)",
-    icon: "fab fa-twitter",
-    url: "https://twitter.com/execamit",
+    icon: "fas fa-phone-alt",
+    url: "tel:9350 533 533",
+  },
+
+  {
+    id: "Maps",
+    color: "#7B3AE5",
+    icon: "fas fa-map-marked",
+    url: "https://goo.gl/maps/WRKBwjm9BRKAaf2C9",
   },
   {
     id: "Facebook",
     color: "rgba(66, 103, 178)",
     icon: "fab fa-facebook-f",
-    url: "https://www.facebook.com/profile.php?id=100064023334142",
+    url: "https://www.facebook.com/people/The-Phone-Repair-Cafe/100064023334142/",
   },
   {
-    id: "Maps",
-    color: "#7B3AE5",
-    icon: "fas fa-map-marked",
-    url: "https://goo.gl/maps/3dHMAmQpgfcFm4YU9",
+    id: "Instagram",
+    color: "#8a3ab9",
+    icon: "fab fa-instagram",
+    url: "https://www.instagram.com/p/CWZmCIQvPtS/",
   },
   {
-    id: "ExecAmit@gmail.com",
+    id: "Telegram",
+    color: "rgba(0, 136, 204)",
+    icon: "fab fa-telegram-plane",
+    url: "https://t.me/joinchat/2ZgoU2uVckE0ZjI1",
+  },
+  {
+    id: "YouTube",
+    color: "rgba(200,10,10)",
+    icon: "fab fa-youtube",
+    url: "https://youtube.com/channel/UCxpPigvW0nhmt8dYvnXpzfA",
+  },
+
+  {
+    id: "thephonerepaircafe2020@gmail.com",
     color: "#bc00f5",
     icon: "fas fa-envelope",
-    url: "mailto:ExecAmit@gmail.com",
+    url: "mailto:thephonerepaircafe2020@gmail.com",
   },
 ];
 

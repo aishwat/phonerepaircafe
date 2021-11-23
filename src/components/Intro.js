@@ -33,8 +33,8 @@ const useStyles = makeStyles((theme) => ({
   // },
   profile_text: {
     textAlign: "left",
-    margin: "auto",
-    // margin: "40px 0px 0px 20px",
+    // margin: "auto",
+    margin: "40px 0px 0px 20px",
     // border: "1px solid red",
   },
   title: {
@@ -76,22 +76,36 @@ const Intro = () => {
             Where phone repair is an experience ☕
           </Typography>
           <Typography gutterBottom>
-            An accomplished business leader who has built
+            We offer a wide range of mobile phone repair services like mic, battery, speaker, back panel, charging jack replacement and more!
             <ul>
-              <li>Across startups and large organisations</li>
+              <li>Must try the services, very reasonable prices, cheaper then online and good quality.</li>
               <li>
-                Businesses grounds up in markets of Asia, Africa and Europe
+                Repair your phone at doorstep/ at store ( in GAUR CITY CENTRE, ADJACENT GAUR CITY MALL)
               </li>
-              <li>Built and led teams from 1 to 1500 with 50+ nationalities</li>
+              <li>Trained Professionals and Doorstep Service</li>
             </ul>
           </Typography>
 
           <Typography gutterBottom>
-            An individual
+            Services available:
             <ul>
-              <li>A Public Speaker, a Startup Mentor & a columnist</li>
-              <li>Graduate from Indian institution of Technology, Bombay</li>
-              <li>MBA from Indian school of Business, Hyderabad</li>
+              <li>Screen repair/replacement</li>
+              <li>Battery replacement</li>
+              <li>Mic replacement</li>
+              <li>Receiver replacement</li>
+              <li>Charging jack replacement/ charging pcb replacement</li>
+              <li>Speaker replacement</li>
+              <li>Back panel replacement</li>
+            </ul>
+          </Typography>
+          <Typography gutterBottom>
+            Why us:
+            <ul>
+              <li>Premium repair: top quality certified parts</li>
+              <li>Instant mobile repair: mobile repair on the spot in "THE PHONE REPAIR CAFE" STORE IN GAUR CITY</li>
+              <li>Skilled Technicians: trained and qualified professionals</li>
+              <li>Guaranteed safety: Total device data security</li>
+              <li>We only use the top quality parts to repair your mobile phone</li>
             </ul>
           </Typography>
         </div>
