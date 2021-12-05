@@ -32,7 +32,7 @@ const contacts = [
     id: "Maps",
     color: "#7B3AE5",
     icon: "fas fa-map-marked",
-    url: "https://goo.gl/maps/WRKBwjm9BRKAaf2C9",
+    url: "https://goo.gl/maps/LvkXFzMoBMXieeqWA",
   },
   {
     id: "Facebook",
